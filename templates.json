@@ -1,0 +1,402 @@
+{
+    "version": "3",
+    "templates": [
+        {
+            "type": 2,
+            "title": "Swarm Essentials",
+            "name": "swarmlibs",
+            "administrator_only": true,
+            "description": "This stack provided necessary services for other stacks to operate",
+            "categories": [
+                "swarmlibs",
+                "stack"
+            ],
+            "platform": "linux",
+            "logo": "https://avatars.githubusercontent.com/u/5429470",
+            "repository": {
+                "url": "https://github.com/swarmlibs/swarmlibs",
+                "stackfile": "docker-stack.yml"
+            }
+        },
+        {
+            "type": 2,
+            "title": "Traefik Ingress/LoadBalancer",
+            "name": "traefik-ingress",
+            "administrator_only": true,
+            "description": "An ingress service using Traefik Edge Router with LoadBalancer using HAProxy for Docker Swarm",
+            "note": "<b>REQUIRED</b>: You must create the following networks before deploy this stack: <code>public</code>, <code>prometheus</code>",
+            "categories": [
+                "swarmlibs",
+                "stack",
+                "ingress",
+                "loadbalancer"
+            ],
+            "platform": "linux",
+            "logo": "https://github.com/traefik/traefik/blob/master/docs/content/assets/img/traefik.logo.png?raw=true",
+            "repository": {
+                "url": "https://github.com/swarmlibs/traefik-ingress",
+                "stackfile": "docker-stack.yml"
+            },
+            "env": [
+                {
+                    "name": "TRAEFIK_LOGLEVEL",
+                    "label": "Log Level",
+                    "select": [
+                        {
+                            "text": "TRACE",
+                            "value": "TRACE"
+                        },
+                        {
+                            "text": "DEBUG",
+                            "value": "DEBUG"
+                        },
+                        {
+                            "text": "INFO",
+                            "value": "INFO",
+                            "default": true
+                        },
+                        {
+                            "text": "WARN",
+                            "value": "WARN"
+                        },
+                        {
+                            "text": "ERROR",
+                            "value": "ERROR"
+                        },
+                        {
+                            "text": "FATAL",
+                            "value": "FATAL"
+                        },
+                        {
+                            "text": "PANIC",
+                            "value": "PANIC"
+                        }
+                    ]
+                },
+                {
+                    "name": "TRAEFIK_API_DASHBOARD",
+                    "label": "Enable dashboard",
+                    "select": [
+                        {
+                            "text": "true",
+                            "value": "true",
+                            "default": true
+                        },
+                        {
+                            "text": "false",
+                            "value": "false"
+                        }
+                    ]
+                },
+                {
+                    "name": "TRAEFIK_API_INSECURE",
+                    "label": "Enable insecure API",
+                    "select": [
+                        {
+                            "text": "true",
+                            "value": "true",
+                            "default": true
+                        },
+                        {
+                            "text": "false",
+                            "value": "false"
+                        }
+                    ]
+                },
+                {
+                    "name": "TRAEFIK_ACCESSLOG",
+                    "label": "Enable the access log",
+                    "select": [
+                        {
+                            "text": "true",
+                            "value": "true"
+                        },
+                        {
+                            "text": "false",
+                            "value": "false",
+                            "default": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": 2,
+            "title": "Promstack",
+            "name": "promstack",
+            "administrator_only": true,
+            "description": "A Docker Stack deployment for the monitoring suite for Docker Swarm includes (Grafana, Prometheus, cAdvisor, Node exporter and Blackbox prober exporter)",
+            "note": "<b>REQUIRED</b>: You must create the following networks before deploy this stack: <code>prometheus</code>, <code>prometheus_gwnetwork</code>",
+            "categories": [
+                "swarmlibs",
+                "stack",
+                "monitoring"
+            ],
+            "platform": "linux",
+            "logo": "https://avatars.githubusercontent.com/u/3380462?s=200&v=4",
+            "repository": {
+                "url": "https://github.com/swarmlibs/promstack",
+                "stackfile": "docker-stack.yml"
+            },
+            "env": [
+                {
+                    "name": "GF_SERVER_PROTOCOL",
+                    "label": "Grafana Server Protocol",
+                    "select": [
+                        {
+                            "text": "http",
+                            "value": "http",
+                            "default": true
+                        },
+                        {
+                            "text": "https",
+                            "value": "https"
+                        }
+                    ]
+                },
+                {
+                    "name": "GF_SERVER_DOMAIN",
+                    "label": "Grafana Server Domain",
+                    "description": "Optional"
+                },
+                {
+                    "name": "GF_SERVER_ROOT_URL",
+                    "label": "Grafana Server Root URL",
+                    "description": "Optional"
+                },
+                {
+                    "name": "GF_SECURITY_ADMIN_USER",
+                    "label": "Grafana Admin User",
+                    "default": "grafana"
+                },
+                {
+                    "name": "GF_SECURITY_ADMIN_PASSWORD",
+                    "label": "Grafana Admin Password",
+                    "default": "grafana"
+                },
+                {
+                    "name": "PROMETHEUS_SCRAPE_INTERVAL",
+                    "label": "Prometheus Scrape Interval",
+                    "default": "10s"
+                },
+                {
+                    "name": "PROMETHEUS_SCRAPE_TIMEOUT",
+                    "label": "Prometheus Scrape Timeout",
+                    "default": "5s"
+                },
+                {
+                    "name": "PROMETHEUS_EVALUATION_INTERVAL",
+                    "label": "Prometheus Evaluation Interval",
+                    "default": "1m"
+                }
+            ]
+        },
+        {
+            "type": 2,
+            "title": "Promstack (Advanced)",
+            "name": "promstack",
+            "administrator_only": true,
+            "description": "A Docker Stack deployment for the monitoring suite for Docker Swarm includes (Grafana, Prometheus, cAdvisor, Node exporter and Blackbox prober exporter)",
+            "note": "<b>REQUIRED</b>: You must create the following networks before deploy this stack: <code>prometheus</code>, <code>prometheus_gwnetwork</code>",
+            "categories": [
+                "swarmlibs",
+                "stack",
+                "monitoring"
+            ],
+            "platform": "linux",
+            "logo": "https://avatars.githubusercontent.com/u/3380462?s=200&v=4",
+            "repository": {
+                "url": "https://github.com/swarmlibs/promstack",
+                "stackfile": "docker-stack.yml"
+            },
+            "env": [
+                {
+                    "name": "GF_SERVER_PROTOCOL",
+                    "label": "Grafana Server Protocol",
+                    "select": [
+                        {
+                            "text": "http",
+                            "value": "http",
+                            "default": true
+                        },
+                        {
+                            "text": "https",
+                            "value": "https"
+                        }
+                    ]
+                },
+                {
+                    "name": "GF_SERVER_DOMAIN",
+                    "label": "Grafana Server Domain",
+                    "description": "Optional"
+                },
+                {
+                    "name": "GF_SERVER_ROOT_URL",
+                    "label": "Grafana Server Root URL",
+                    "description": "Optional"
+                },
+                {
+                    "name": "GF_SECURITY_ADMIN_USER",
+                    "label": "Grafana Admin User",
+                    "default": "grafana"
+                },
+                {
+                    "name": "GF_SECURITY_ADMIN_PASSWORD",
+                    "label": "Grafana Admin Password",
+                    "default": "grafana"
+                },
+                {
+                    "name": "GF_SMTP_ENABLED",
+                    "label": "Grafana SMTP Enabled",
+                    "select": [
+                        {
+                            "text": "true",
+                            "value": "true"
+                        },
+                        {
+                            "text": "false",
+                            "value": "false",
+                            "default": true
+                        }
+                    ]
+                },
+                {
+                    "name": "GF_SMTP_HOST",
+                    "label": "Grafana SMTP Host"
+                },
+                {
+                    "name": "GF_SMTP_USER",
+                    "label": "Grafana SMTP User"
+                },
+                {
+                    "name": "GF_SMTP_PASSWORD",
+                    "label": "Grafana SMTP Password"
+                },
+                {
+                    "name": "GF_SMTP_FROM_ADDRESS",
+                    "label": "Grafana SMTP From Address"
+                },
+                {
+                    "name": "GF_SMTP_FROM_NAME",
+                    "label": "Grafana SMTP From Name"
+                },
+                {
+                    "name": "GF_SMTP_SKIP_VERIFY",
+                    "label": "Grafana SMTP Skip Verify"
+                },
+                {
+                    "name": "GF_SNAPSHOTS_EXTERNAL_SNAPSHOT_URL",
+                    "label": "Expert: Grafana External Snapshot Server",
+                    "description": "Default: https://snapshots.raintank.io"
+                },
+                {
+                    "name": "GF_SNAPSHOTS_EXTERNAL_SNAPSHOT_NAME",
+                    "label": "Expert: Grafana External Snapshot Name",
+                    "description": "Default: Publish to snapshots.raintank.io"
+                },
+                {
+                    "name": "PROMETHEUS_SCRAPE_INTERVAL",
+                    "label": "Prometheus Scrape Interval",
+                    "default": "10s"
+                },
+                {
+                    "name": "PROMETHEUS_SCRAPE_TIMEOUT",
+                    "label": "Prometheus Scrape Timeout",
+                    "default": "5s"
+                },
+                {
+                    "name": "PROMETHEUS_EVALUATION_INTERVAL",
+                    "label": "Prometheus Evaluation Interval",
+                    "default": "1m"
+                },
+                {
+                    "name": "PROMETHEUS_ALERTMANAGER_ADDR",
+                    "label": "Expert: Prometheus Alertmanager Address",
+                    "description": "Default: Grafana Built-in Alerting"
+                },
+                {
+                    "name": "PROMETHEUS_ALERTMANAGER_PORT",
+                    "label": "Expert: Prometheus Alertmanager Port",
+                    "description": "Default: 9094"
+                }
+            ]
+        },
+        {
+            "type": 2,
+            "title": "Promstack (Compose Support)",
+            "name": "promstack-compose-support",
+            "administrator_only": true,
+            "description": "A Docker Compose support stack for Promstack",
+            "note": "<b>REQUIRED</b>: This stack requires you to first deploy <code>promstack</code>",
+            "categories": [
+                "swarmlibs",
+                "stack",
+                "monitoring"
+            ],
+            "platform": "linux",
+            "logo": "https://avatars.githubusercontent.com/u/3380462?s=200&v=4",
+            "repository": {
+                "url": "https://github.com/swarmlibs/promstack-compose-support",
+                "stackfile": "docker-stack.yml"
+            },
+            "env": [
+                {
+                    "name": "PROMETHEUS_SCRAPE_INTERVAL",
+                    "label": "Prometheus Scrape Interval",
+                    "default": "10s"
+                },
+                {
+                    "name": "PROMETHEUS_SCRAPE_TIMEOUT",
+                    "label": "Prometheus Scrape Timeout",
+                    "default": "5s"
+                },
+                {
+                    "name": "PROMETHEUS_EVALUATION_INTERVAL",
+                    "label": "Prometheus Evaluation Interval",
+                    "default": "1m"
+                }
+            ]
+        },
+        {
+            "type": 2,
+            "title": "Logstack",
+            "name": "logstack",
+            "administrator_only": true,
+            "description": "Like Promstack, but for logs. Includes (Grafana Loki and Promtail)",
+            "note": "<b>REQUIRED</b>: This stack requires you to first deploy <code>promstack</code>. You must create the following networks before deploy this stack: <code>logstack_gwnetwork</code>, <code>prometheus_gwnetwork</code>",
+            "categories": [
+                "swarmlibs",
+                "stack",
+                "monitoring"
+            ],
+            "platform": "linux",
+            "logo": "https://grafana.com/media/docs/loki/logo-grafana-loki.png",
+            "repository": {
+                "url": "https://github.com/swarmlibs/logstack",
+                "stackfile": "docker-stack.yml"
+            },
+            "env": [
+                {
+                    "name": "GF_LOKI_COMMON_STORAGE_RING_REPLICATION_FACTOR",
+                    "label": "Grafana Loki Ring Replication Factor",
+                    "description": "The replication factor is dependent on the number of Docker Swarm managers. Default: 1",
+                    "select": [
+                        {
+                            "text": "1",
+                            "value": "1",
+                            "default": true
+                        },
+                        {
+                            "text": "2",
+                            "value": "2"
+                        },
+                        {
+                            "text": "3",
+                            "value": "3"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
