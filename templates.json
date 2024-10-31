@@ -410,7 +410,7 @@
             "platform": "linux",
             "logo": "https://raw.githubusercontent.com/docker-library/docs/b09c592af0d6061629e02e4f674d22848f8236e8/registry/logo.png",
             "repository": {
-                "url": "https://github.com/swarmlibs/portainer-templates",
+                "url": "https://github.com/swarmlibs/stacks",
                 "stackfile": "registry/docker-stack.yml"
             },
             "env": [
@@ -448,7 +448,7 @@
             "platform": "linux",
             "logo": "https://raw.githubusercontent.com/crazy-max/swarm-cronjob/master/.github/swarm-cronjob.png",
             "repository": {
-                "url": "https://github.com/swarmlibs/portainer-templates",
+                "url": "https://github.com/swarmlibs/stacks",
                 "stackfile": "crond/docker-stack.yml"
             },
             "env": [
