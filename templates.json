@@ -403,7 +403,7 @@
             "title": "Portainer Template Extras",
             "name": "portainer-template-extras",
             "description": "A self-hosted Portainer template server with built-in extra templates hosted by \"swarmlibs\"",
-            "note": "Upon successfull deployment, to use the template server. Please configure <b>\"App Template URL\"</b> to use <code>http://host.docker.internal:4242/templates.json</code> in Portainer's settings",
+            "note": "Please configure <b>\"App Template URL\"</b> to use <code>http://host.docker.internal:4242/templates.json</code> in Portainer's settings",
             "categories": [
                 "swarmlibs",
                 "portainer"
