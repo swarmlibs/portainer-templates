@@ -8,6 +8,12 @@ For more information about the template definition format and how to deploy your
 https://raw.githubusercontent.com/swarmlibs/portainer-templates/refs/heads/main/templates.json
 ```
 
+Or, if you have deployed the **Portainer Template Extras** stack:
+
+```
+http://host.docker.internal:4242/templates.json
+```
+
 ## App template JSON format
 
 For more information about the app template JSON format, see the [relevant documentation section](https://docs.portainer.io/advanced/app-templates).
