@@ -403,7 +403,7 @@
             "title": "Portainer Template Extras",
             "name": "portainer-template-extras",
             "description": "A self-hosted Portainer template server with built-in extra templates hosted by \"swarmlibs\"",
-            "note": "Please configure <b>\"App Template URL\"</b> to use <code>http://host.docker.internal:4242/templates.json</code> in Portainer's settings",
+            "note": "Please configure <b>\"App Template URL\"</b> to use <code>http://portainer-template-extras.internal:4242/templates.json</code> in Portainer's settings",
             "categories": [
                 "swarmlibs",
                 "portainer"
@@ -416,16 +416,15 @@
             },
             "env": [
                 {
+                    "name": "PORTAINER_AGENT_NETWORK",
+                    "label": "Portainer Agent Network",
+                    "default": "portainer_agent_network"
+                },
+                {
                     "name": "REPOS_URL",
                     "label": "Repository URL",
                     "description": "The URL of the \"repos.json\" file",
                     "default": "https://raw.githubusercontent.com/swarmlibs/portainer-template-extras/refs/heads/main/repos.json",
-                    "preset": true
-                },
-                {
-                    "name": "PUBLISHED_PORT",
-                    "label": "Published port",
-                    "default": "4242",
                     "preset": true
                 }
             ]
