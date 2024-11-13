@@ -409,7 +409,7 @@
                 "portainer"
             ],
             "platform": "linux",
-            "logo": "https://portainer-io-assets.sfo2.digitaloceanspaces.com/logos/portainer.png",
+            "logo": "https://raw.githubusercontent.com/swarmlibs/portainer-template-extras/refs/heads/main/.github/assets/portainer-templates-server.png",
             "repository": {
                 "url": "https://github.com/swarmlibs/portainer-template-extras",
                 "stackfile": "portainer-templates-server/docker-stack.yml"
